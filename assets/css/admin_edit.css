@@ -1,0 +1,11 @@
+ul{
+    list-style-type: none;
+}
+.search_bar{
+    margin-left: 300px;
+    
+}
+.manage{
+    float: right;
+    margin-right: 1000px
+}
