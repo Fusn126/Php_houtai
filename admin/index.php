@@ -7,8 +7,14 @@
     </title>
 </head>
 <body>
+  <?php
+      require_once '../admin/inc/session.php'; 
+      if(is_login()){
+        redirect_to("./admin_edit.php?page=1");
+      }
+     ?>
     <h1 id="title1">
-        <img src="/assets/img/1538179811_443766.png" alt="网站标题">
+        <img src="/assets/img/logo.png.png" alt="网站标题">
     </h1>
     <div class="margin" id="pic">
          <img src="/assets/img/u=415293130,2419074865&fm=27&gp=0.jpg" alt="首页界面" />
@@ -16,8 +22,8 @@
     </div>
     <div class="login">
         <form action="/admin/sigh_register/enter.php" method="post" onsubmit="return enter()"> 
-            用户名<input type="text" name="username" id="username"><br> &nbsp&nbsp
-            密码<input type="password" name="password" id="password"><br> 
+            用户名:&nbsp&nbsp<input type="text" name="username" id="username"><br><br> &nbsp&nbsp
+            密码:&nbsp&nbsp<input type="password" name="password" id="password"><br><br> 
             <div class="A1">
             <input type="submit" value="登录">  &nbsp&nbsp
               <input type="button" value="注册" onclick="register();"> 

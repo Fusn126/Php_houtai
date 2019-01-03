@@ -71,25 +71,23 @@ a:hover {
 	
 }
 .side_panel2{
-	height: 1500px;
-	width:200px;
-	float:right;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	margin-left: 20px;
-	border-left:1px dashed #0099FF;
-	background-color: white;
+	height: 550px;
 	
 }
+.side_panel2 ul{
+	list-style:none;
+}
 .side_panel2 li{
+
 	margin-bottom:10px;
-	margin-left: 10px;
+	background-color: #08639C;
+	margin-right: 30px;
 }
 .side_panel2 li a{
 	    display: block;
-	    color: #111111;
+	    color: #ffffff;
 	    text-align: center;
-	    padding: 14px 16px;
+		padding: 14px 16px;
 	    text-decoration: none;
 }
 .side_panel2 li a:hover{

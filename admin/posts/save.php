@@ -3,7 +3,30 @@
 require_once '../inc/db.php';
 require_once '../inc/common.php';
 $inof = $_POST['choose'];
-$sql = "insert into posts(title,body,created_at,categories_id,pic) values(:title, :body,:created_at,:categories_id,:pic);";
+if($_POST['code']){
+
+    $pattern = array(
+
+    '/ /',//半角下空格
+
+    '/　/',//全角下空格
+
+    '/\r\n/',//window 下换行符
+
+	'/\n/',//Linux && Unix 下换行符
+
+	'/</' ,
+
+	'/>/',
+
+    );
+
+    $replace = array('&nbsp;','&nbsp;','&#10','&#10','&lt','&gt');
+
+    $code= preg_replace($pattern, $replace, $_POST['code']);
+
+}
+$sql = "insert into posts(title,body,created_at,categories_id,pic,code) values(:title, :body,:created_at,:categories_id,:pic,:code);";
 $query2 = $db->query("SELECT * FROM categories WHERE name ='$inof'");
 $post = $query2->fetchObject();
 $query = $db->prepare($sql);
@@ -18,6 +41,7 @@ $query->bindParam(':body', $_POST['body'], PDO::PARAM_STR);
 $query->bindParam(':created_at', $created_at, PDO::PARAM_STR);
 $query->bindValue(':categories_id', $id, PDO::PARAM_INT);
 $query->bindValue('pic', $dest_path, PDO::PARAM_INT);
+$query->bindParam(':code', $code, PDO::PARAM_STR);
 if (!$query->execute()) {
 	print_r($query->errorInfo());
 } 

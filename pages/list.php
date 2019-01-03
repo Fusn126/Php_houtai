@@ -15,8 +15,8 @@
         <div class="logo">
             <img src="/assets/img/logo.png.png" height="100px" width="250px" alt="首页">
 			<div class="search_bar">
-				<form name="search_bar" action="search.php" method="get">
-					<input type="text" name="user" height="200px">
+				<form name="search_bar" action="../admin/posts/search.php" method="get">
+					<input type="text" name="search" height="200px">
 					<input type="submit" value="搜索">
 				</form>
 			</div>
@@ -37,6 +37,21 @@
 			
         </div>
         <div class="rightsign">
+        <div class="side_panel2">
+            <ul>
+                <li><a href="../index.php">主页</a></li>
+        <?php
+            require_once '../admin/inc/db.php';
+            $query = $db->query('select * from categories');
+            while ( $post =  $query->fetchObject()) {
+          ?>
+                    <li><a href="../pages/list.php?categories_id=<?php print $post->id;?>"><?php echo $post->name;?></a></li>
+                <?php } ?>
+                <li>
+                <a href="../admin/index.php">管理接口</a>
+                </li>
+                </ul>        			
+            </div>
                 <?php
                 require_once '../admin/inc/db.php';
                 $query = $db->query('select * from tags');
@@ -62,7 +77,7 @@
 						<img src="..<?php echo $post->pic; ?>" class="media-object" style="height:90px;width:200px;">
 					</div>
 					<div class="media-body">
-						<a href="../admin/posts/show.php?id=<?php print $post->id; ?>"><h4 class="media-heading"><?php echo $post>title; ?></h4></a>
+						<a href="../admin/posts/show_usr.php?id=<?php print $post->id; ?>"><h4 class="media-heading"><?php echo $post->title; ?></h4></a>
 						<p> <?php echo $post->body;?></p>
                         <?php echo $post->created_at;?><br>
 					</div>
@@ -73,7 +88,7 @@
 						<img src="..<?php echo $post->pic; ?>" class="media-object" style="height:90px;width:200px;">
 					</div>
 					<div class="media-body">
-						<a href="../admin/posts/show.php?id=<?php print $post->id; ?>"><h4 class="media-heading"><?php echo $post->title; ?></h4></a>
+						<a href="../admin/posts/show_usr.php?id=<?php print $post->id; ?>"><h4 class="media-heading"><?php echo $post->title; ?></h4></a>
 						<p> <?php echo $post->body;?></p>
                         <?php echo $post->created_at;?><br>
 					</div>

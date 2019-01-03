@@ -7,7 +7,7 @@ $query->bindParam(':name',$_POST['name'],PDO::PARAM_STR);
 if (!$query->execute()) {	
 	print_r($query->errorInfo());
 }else{
-	redirect_to("../admin/admin_edit.php");
+	redirect_to("../");
 };
 
 ?>
